@@ -15,6 +15,7 @@ public class Controller implements ActionListener{
 	private FileServices fileServices;
 	private CaretListener listener;
 	private String stmpg;
+	private String testing;
 
 	/**
      * Constructor sin parametros
