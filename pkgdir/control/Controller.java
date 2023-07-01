@@ -2,6 +2,7 @@
 package pkgdir.control;
 
 import pkgdir.modelo.FileServices;
+import pkgdir.modelo.MysqlServices;
 import pkgdir.graficos.GuiUser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +14,7 @@ public class Controller implements ActionListener{
 
 	private GuiUser guiUserl;
 	private FileServices fileServices;
+	public  MysqlServices msqlserv;
 	private CaretListener listener;
 	private String stmpg;
 
@@ -48,9 +50,10 @@ public class Controller implements ActionListener{
 			guiUserl.getTextField().setText("");
 	   	}
 		if( ae.getSource() == guiUserl.getBotonRead()){
-			fileServices = new FileServices();
-			String stmp = fileServices.readFile( "historial.txt" );
-			guiUserl.gettextAreaRead().setText(stmp);
+			//fileServices = new FileServices();
+			//String stmp = fileServices.readFile( "historial.txt" );
+			msqlserv = new MysqlServices();
+			guiUserl.gettextAreaRead().append( msqlserv.getDataFromMysql() );
 	   	}
 		if( ae.getSource() == guiUserl.getBotonDel()){
 			fileServices = new FileServices();
