@@ -17,6 +17,7 @@ public class Controller implements ActionListener{
 	public  MysqlServices msqlserv;
 	private CaretListener listener;
 	private String stmpg;
+	private String selected;
 
 	/**
      * Constructor sin parametros
@@ -50,15 +51,29 @@ public class Controller implements ActionListener{
 			guiUserl.getTextField().setText("");
 	   	}
 		if( ae.getSource() == guiUserl.getBotonRead()){
-			//fileServices = new FileServices();
-			//String stmp = fileServices.readFile( "historial.txt" );
-			msqlserv = new MysqlServices();
-			guiUserl.gettextAreaRead().append( msqlserv.getDataFromMysql() );
+			if( selected == null ){
+				int index = guiUserl.getCboxModelo().getSelectedIndex(); 
+				selected = (String)guiUserl.getCboxModelo().getItemAt( index );	
+			}
+			if( selected.equals( "Archivo plano" ) ){
+				fileServices = new FileServices();
+				String stmp = fileServices.readFile( "historial.txt" );	
+				guiUserl.gettextAreaRead().setText( stmp );
+			}else{
+				msqlserv = new MysqlServices();
+				guiUserl.gettextAreaRead().setText( msqlserv.getDataFromMysql() );	
+			}
 	   	}
 		if( ae.getSource() == guiUserl.getBotonDel()){
 			fileServices = new FileServices();
 			fileServices.delText( "historial.txt", stmpg);
 	   	}
+		if( ae.getSource() == guiUserl.getCboxModelo()){
+			int index = guiUserl.getCboxModelo().getSelectedIndex(); 
+			selected = (String)guiUserl.getCboxModelo().getItemAt( index );
+			System.out.println("Soy un JComboBOx: "+selected);
+	   	}
+
 	}
 
 	
@@ -66,6 +81,7 @@ public class Controller implements ActionListener{
      * Metodo que agrega eventos sobre los componentes de GuiUser
      */
 	private void agregarEventos(){
+		guiUserl.getCboxModelo().addActionListener(this);
 		guiUserl.getBotonWrite().addActionListener(this);
 		guiUserl.getBotonRead().addActionListener(this);
 		guiUserl.getBotonDel().addActionListener(this);

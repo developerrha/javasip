@@ -15,6 +15,7 @@ import java.net.URL;
 **/
 public class GuiUser extends JFrame{
 	private JPanel panel;
+	private JComboBox cbModelo;
 	private JButton butWrite;
 	private JButton butRead;
 	private JButton butDel;
@@ -53,6 +54,26 @@ public class GuiUser extends JFrame{
 			e.printStackTrace();
 		}
 
+	}
+
+	/**
+	*Metodo que pinta el JComboBox cbModelo
+	*Retorna JComboBox
+	*/
+	private JComboBox drawCboxModelo(){
+		try{
+			String modeloItems[]={"Archivo plano","Base de datos"};        
+    			cbModelo = new JComboBox(modeloItems); 
+			cbModelo.setBackground(Color.WHITE);
+			cbModelo.setFont(cbModelo.getFont().deriveFont(Font.BOLD | Font.ITALIC));
+			cbModelo.setAlignmentX(panel.CENTER_ALIGNMENT);
+			cbModelo.setPreferredSize(new Dimension(150, 30));
+		     cbModelo.setMaximumSize(new Dimension(150, 30));
+			cbModelo.setSelectedIndex(1);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return cbModelo;
 	}
 
 	/**
@@ -162,6 +183,8 @@ public class GuiUser extends JFrame{
 		     panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 			panel.add(Box.createVerticalStrut(10));
 			panel.setBackground(Color.CYAN);
+			panel.add(drawCboxModelo());
+			panel.add(Box.createVerticalStrut(5));
 			panel.add(drawTextfWrite());
 			panel.add(Box.createVerticalStrut(5));
 			panel.add(drawButtonWrite());
@@ -177,6 +200,13 @@ public class GuiUser extends JFrame{
 		return panel;
 	}	
 
+	/**
+     * Devuelve el Choice modelos
+     * @return
+     */
+    public JComboBox getCboxModelo() {
+        return cbModelo;
+    }
 
 	/**
      * Devuelve el boton escribir

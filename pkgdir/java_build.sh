@@ -6,6 +6,6 @@ echo "Generando JAR"
 cd dist/
 jar -cmf META-INF/MANIFEST.MF java_clases.jar pkgdir/CargarClase.class pkgdir res/*.png
 echo "Ejecutando aplicacion"
-/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java -jar java_clases.jar
+java -jar java_clases.jar
 cd ..
 exit
