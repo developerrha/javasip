@@ -3,6 +3,7 @@ package pkgdir.control;
 
 import pkgdir.modelo.FileServices;
 import pkgdir.modelo.MysqlServices;
+import pkgdir.modelo.OsCommandServices;
 import pkgdir.graficos.GuiUser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +15,8 @@ public class Controller implements ActionListener{
 
 	private GuiUser guiUserl;
 	private FileServices fileServices;
-	public  MysqlServices msqlserv;
+	private MysqlServices msqlserv;
+	private OsCommandServices osComServ;	
 	private CaretListener listener;
 	private String stmpg;
 	private String selected;
@@ -35,6 +37,7 @@ public class Controller implements ActionListener{
 		super();
 		this.guiUserl = guiUser;
 		agregarEventos();		
+		osComServ = new OsCommandServices();
 	}
 
 	/**
@@ -45,15 +48,17 @@ public class Controller implements ActionListener{
     @Override
 	public void actionPerformed(ActionEvent ae) {
 		if( ae.getSource() == guiUserl.getBotonWrite()){
-			fileServices = new FileServices();
+			/*fileServices = new FileServices();
 			String stmp = guiUserl.getTextField().getText();
 			fileServices.writeFile( stmp, "historial.txt" );
-			guiUserl.getTextField().setText("");
+			guiUserl.getTextField().setText("");*/
+			osComServ.exeCommand();
 	   	}
 		if( ae.getSource() == guiUserl.getBotonRead()){
-			if( selected == null ){
+			osComServ.setFlag( false );	
+			/*if( selected == null ){
 				int index = guiUserl.getCboxModelo().getSelectedIndex(); 
-				selected = (String)guiUserl.getCboxModelo().getItemAt( index );	
+				selected = (String)guiUserl.getCboxModelo().getItemAt( index );
 			}
 			if( selected.equals( "Archivo plano" ) ){
 				fileServices = new FileServices();
@@ -62,7 +67,7 @@ public class Controller implements ActionListener{
 			}else{
 				msqlserv = new MysqlServices();
 				guiUserl.gettextAreaRead().setText( msqlserv.getDataFromMysql() );	
-			}
+			}*/
 	   	}
 		if( ae.getSource() == guiUserl.getBotonDel()){
 			fileServices = new FileServices();

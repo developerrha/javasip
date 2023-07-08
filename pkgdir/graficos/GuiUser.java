@@ -15,7 +15,7 @@ import java.net.URL;
 **/
 public class GuiUser extends JFrame{
 	private JPanel panel;
-	private JComboBox cbModelo;
+	private JComboBox<String> cbModelo;
 	private JButton butWrite;
 	private JButton butRead;
 	private JButton butDel;
@@ -47,7 +47,7 @@ public class GuiUser extends JFrame{
 			this.setTitle("HV: "+namel+" doc: "+docl+" edad: "+edadl);
 			this.setLocationRelativeTo(null);
 			this.setResizable(true);
-			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			this.getContentPane().add(drawPanel());
 			this.setVisible(true);
 		}catch(Exception e){
@@ -63,7 +63,7 @@ public class GuiUser extends JFrame{
 	private JComboBox drawCboxModelo(){
 		try{
 			String modeloItems[]={"Archivo plano","Base de datos"};        
-    			cbModelo = new JComboBox(modeloItems); 
+    			cbModelo = new JComboBox<>(modeloItems); 
 			cbModelo.setBackground(Color.WHITE);
 			cbModelo.setFont(cbModelo.getFont().deriveFont(Font.BOLD | Font.ITALIC));
 			cbModelo.setAlignmentX(panel.CENTER_ALIGNMENT);

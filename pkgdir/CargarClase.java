@@ -13,7 +13,7 @@ public class CargarClase {
      public static void main(String[] args) {
 		try{
 			front = new GuiUser();
-			front.showWin("Carlos", (long)1234567,(int)35);	
+			front.showWin("Patricia", (long)1234567,(int)35);
 			Controller controlador = new Controller( front );
 		}catch(Exception e){
 			e.printStackTrace();
