@@ -16,15 +16,12 @@ public class OsCommandServices{
 		super();
 	}
 	
-	public String exeCommand(){ 
+	public String exeCommand( String command ){ 
 		String stmt = "";
-		System.out.println("Inicia exe..");
+		System.out.println("Inicia exe command: "+command);
 		try{
-			String cmd_ts = "ls";
-			String param_ts = "-la";
-			System.out.println("cmd_ts: "+cmd_ts+" "+param_ts);
-			ProcessBuilder pb = new ProcessBuilder( cmd_ts, param_ts  );
-			pb.directory(new File("."));
+			String[] cmd_ts = command.split(" ") ;
+			ProcessBuilder pb = new ProcessBuilder( cmd_ts );
 			Process process = pb.start();
 			BufferedReader reader = new BufferedReader( new InputStreamReader(process.getInputStream()));
 			String line;

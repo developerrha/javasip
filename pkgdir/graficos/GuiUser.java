@@ -21,12 +21,12 @@ public class GuiUser extends JFrame{
 	private JButton butRead;
 	private JButton butDel;
 	private JLabel labWrite;
+	private JLabel labTasks;
 	private JTextField texfWrite;
+	private JPanel jtmp;
 	private JTextArea areaRead;
 	private JScrollPane scrollRead;
-	private String namel;
-	private Long docl;
-	private int edadl;
+	private String title;
 
 	/**
 	*Metodo constructor de la clase		
@@ -38,14 +38,11 @@ public class GuiUser extends JFrame{
 	*Metodo que pinta el JFrame		
 	*Retorna vacio
 	*/
-	public void showWin(String name, Long documento, int edad){
+	public void showWin(String titleG){
 		try{
-			this.namel = name;
-			this.docl = documento;
-			this.edadl = edad; 
-			System.out.println("Pintando ventana namel= "+namel+" docl= "+docl+" edadl= "+edadl);
+			this.title = titleG;
 			this.setSize(550, 350);
-			this.setTitle("HV: "+namel+" doc: "+docl+" edad: "+edadl);
+			this.setTitle(title);
 			this.setLocationRelativeTo(null);
 			this.setResizable(true);
 			this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -61,20 +58,26 @@ public class GuiUser extends JFrame{
 	*Metodo que pinta el JComboBox cbModelo
 	*Retorna JComboBox
 	*/
-	private JComboBox drawCboxModelo(){
+	private JPanel drawCboxModelo(){
+		JPanel jtmpCb = new JPanel();
 		try{
+			jtmpCb.setLayout(new BoxLayout(jtmpCb,BoxLayout.X_AXIS));			
+			labTasks = new JLabel("Tareas:  ");
 			String modeloItems[]={"Archivo plano","Base de datos", "Comando"};        
     			cbModelo = new JComboBox<>(modeloItems); 
+			labTasks.setLabelFor( cbModelo );
 			cbModelo.setBackground(Color.WHITE);
 			cbModelo.setFont(cbModelo.getFont().deriveFont(Font.BOLD | Font.ITALIC));
 			cbModelo.setAlignmentX(panel.CENTER_ALIGNMENT);
 			cbModelo.setPreferredSize(new Dimension(150, 30));
 		     cbModelo.setMaximumSize(new Dimension(150, 30));
-			cbModelo.setSelectedIndex(1);
+			cbModelo.setSelectedIndex(0);
+			jtmpCb.add(labTasks);
+			jtmpCb.add(cbModelo);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return cbModelo;
+		return jtmpCb;
 	}
 
 	/**
@@ -159,7 +162,7 @@ public class GuiUser extends JFrame{
 	*Retorna JTextField
 	*/
 	private JPanel drawTextfWrite(){
-		JPanel jtmp = new JPanel();
+		jtmp = new JPanel();
 		try{
 		     jtmp.setLayout(new BoxLayout(jtmp,BoxLayout.X_AXIS));			
 			labWrite = new JLabel("Texto:  ");
@@ -186,8 +189,8 @@ public class GuiUser extends JFrame{
 			areaRead.setEditable(false);
 			scrollRead = new JScrollPane(areaRead);
 			areaRead.setFont(new Font("Serif", Font.PLAIN, 16));
-			scrollRead.setPreferredSize(new Dimension(350, 120));
-			scrollRead.setMaximumSize(new Dimension(350, 120));
+			scrollRead.setPreferredSize(new Dimension(400, 160));
+			scrollRead.setMaximumSize(new Dimension(400, 160));
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -212,7 +215,7 @@ public class GuiUser extends JFrame{
 			panel.add(Box.createVerticalStrut(5));
 			panel.add(drawButtonCommand());
 			panel.add(Box.createVerticalStrut(5));
-		panel.add(drawButtonRead());
+			panel.add(drawButtonRead());
 			panel.add(Box.createVerticalStrut(5));
 			panel.add(drawAreaRead());
 			panel.add(Box.createVerticalStrut(5));
@@ -277,6 +280,14 @@ public class GuiUser extends JFrame{
      */
     public JTextField getTextField() {
         return texfWrite;
+    }
+	
+	/**
+     * Devuelve el texField Panel del JtextField 
+     * @return
+     */
+    public JPanel getJpanelTxt() {
+        return jtmp;
     }
 
 

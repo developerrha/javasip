@@ -60,6 +60,11 @@ public class Controller implements ActionListener{
 			if( selected == null ){
 				int index = guiUserl.getCboxModelo().getSelectedIndex(); 
 				selected = (String)guiUserl.getCboxModelo().getItemAt( index );
+				guiUserl.getBotonWrite().setVisible( true );
+				guiUserl.getBotonRead().setVisible( true );
+				guiUserl.getBotonDel().setVisible( true);
+				guiUserl.getBotonCommand().setVisible(false);		
+				guiUserl.getTextField().setVisible( true );	
 			}
 			if( selected.equals( "Archivo plano" ) ){
 				fileServices = new FileServices();
@@ -77,7 +82,7 @@ public class Controller implements ActionListener{
 		if( ae.getSource() == guiUserl.getBotonCommand()){
 			thread = new Thread(){
 		          public void run(){
-		       	 	guiUserl.gettextAreaRead().setText( osComServ.exeCommand() );
+		       	 	guiUserl.gettextAreaRead().setText( osComServ.exeCommand( guiUserl.getTextField().getText()  ) );
 				}
 			};
 			thread.start();
@@ -86,11 +91,26 @@ public class Controller implements ActionListener{
 			int index = guiUserl.getCboxModelo().getSelectedIndex(); 
 			selected = (String)guiUserl.getCboxModelo().getItemAt( index );
 			System.out.println("Soy un JComboBOx: "+selected);
+			if( selected.equals( "Archivo plano" ) ){
+				guiUserl.getBotonWrite().setVisible( true );
+				guiUserl.getBotonRead().setVisible( true );
+				guiUserl.getBotonDel().setVisible( true);
+				guiUserl.getBotonCommand().setVisible(false);		
+				guiUserl.getJpanelTxt().setVisible( true );		
+			}
+			if( selected.equals( "Base de datos" ) ){
+				guiUserl.getBotonWrite().setVisible( false );
+				guiUserl.getBotonRead().setVisible( true );
+				guiUserl.getBotonDel().setVisible( false );
+				guiUserl.getBotonCommand().setVisible( false );		
+				guiUserl.getJpanelTxt().setVisible( false );		
+			}
 			if( selected.equals("Comando") ){
 				guiUserl.getBotonWrite().setVisible(false);
 				guiUserl.getBotonRead().setVisible(false);
 				guiUserl.getBotonDel().setVisible(false);
 				guiUserl.getBotonCommand().setVisible(true);		
+				guiUserl.getJpanelTxt().setVisible( true );		
 			}
 	   	}
 

@@ -1,7 +1,6 @@
 Alvaro Alba
 Maria Mora
 Gustavo Gomez
-Pedro Perez
 Carlos Castro
 Maria Munevar
 Felipe Florez
@@ -19,3 +18,4 @@ Mario Moreno
 Pedro Pascasio
 Saulo Salmos
 Julio Juicios
+Rafael Alvarez
