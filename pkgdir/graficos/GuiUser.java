@@ -17,6 +17,7 @@ public class GuiUser extends JFrame{
 	private JPanel panel;
 	private JComboBox<String> cbModelo;
 	private JButton butWrite;
+	private JButton butCommand;
 	private JButton butRead;
 	private JButton butDel;
 	private JLabel labWrite;
@@ -62,7 +63,7 @@ public class GuiUser extends JFrame{
 	*/
 	private JComboBox drawCboxModelo(){
 		try{
-			String modeloItems[]={"Archivo plano","Base de datos"};        
+			String modeloItems[]={"Archivo plano","Base de datos", "Comando"};        
     			cbModelo = new JComboBox<>(modeloItems); 
 			cbModelo.setBackground(Color.WHITE);
 			cbModelo.setFont(cbModelo.getFont().deriveFont(Font.BOLD | Font.ITALIC));
@@ -74,6 +75,26 @@ public class GuiUser extends JFrame{
 			e.printStackTrace();
 		}
 		return cbModelo;
+	}
+
+	/**
+	*Metodo que pinta el JButton butCommand
+	*Retorna JButton
+	*/
+	private JButton drawButtonCommand(){
+		try{
+		     URL url = GuiUser.class.getResource("../../res/write_1.png");
+		     BufferedImage img = ImageIO.read(url);
+			butCommand = new JButton("Comando",new ImageIcon(img));
+			butCommand.setBackground(Color.WHITE);
+			butCommand.setFont(butCommand.getFont().deriveFont(Font.BOLD | Font.ITALIC));
+			butCommand.setAlignmentX(panel.CENTER_ALIGNMENT);
+			butCommand.setVisible(false);
+			butCommand.setFocusPainted(true);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return butCommand;
 	}
 
 	/**
@@ -189,7 +210,9 @@ public class GuiUser extends JFrame{
 			panel.add(Box.createVerticalStrut(5));
 			panel.add(drawButtonWrite());
 			panel.add(Box.createVerticalStrut(5));
-			panel.add(drawButtonRead());
+			panel.add(drawButtonCommand());
+			panel.add(Box.createVerticalStrut(5));
+		panel.add(drawButtonRead());
 			panel.add(Box.createVerticalStrut(5));
 			panel.add(drawAreaRead());
 			panel.add(Box.createVerticalStrut(5));
@@ -230,6 +253,14 @@ public class GuiUser extends JFrame{
      */
     public JButton getBotonDel() {
         return butDel;
+    }
+
+	/**
+     * Devuelve el boton comando
+     * @return
+     */
+    public JButton getBotonCommand() {
+        return butCommand;
     }
 
 	/**

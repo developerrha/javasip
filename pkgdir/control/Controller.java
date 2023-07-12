@@ -20,6 +20,7 @@ public class Controller implements ActionListener{
 	private CaretListener listener;
 	private String stmpg;
 	private String selected;
+	private Thread thread;
 
 	/**
      * Constructor sin parametros
@@ -48,15 +49,15 @@ public class Controller implements ActionListener{
     @Override
 	public void actionPerformed(ActionEvent ae) {
 		if( ae.getSource() == guiUserl.getBotonWrite()){
-			/*fileServices = new FileServices();
+			fileServices = new FileServices();
 			String stmp = guiUserl.getTextField().getText();
 			fileServices.writeFile( stmp, "historial.txt" );
-			guiUserl.getTextField().setText("");*/
-			osComServ.exeCommand();
+			guiUserl.getTextField().setText("");
+			
+			
 	   	}
 		if( ae.getSource() == guiUserl.getBotonRead()){
-			osComServ.setFlag( false );	
-			/*if( selected == null ){
+			if( selected == null ){
 				int index = guiUserl.getCboxModelo().getSelectedIndex(); 
 				selected = (String)guiUserl.getCboxModelo().getItemAt( index );
 			}
@@ -67,16 +68,30 @@ public class Controller implements ActionListener{
 			}else{
 				msqlserv = new MysqlServices();
 				guiUserl.gettextAreaRead().setText( msqlserv.getDataFromMysql() );	
-			}*/
+			}
 	   	}
 		if( ae.getSource() == guiUserl.getBotonDel()){
 			fileServices = new FileServices();
 			fileServices.delText( "historial.txt", stmpg);
 	   	}
+		if( ae.getSource() == guiUserl.getBotonCommand()){
+			thread = new Thread(){
+		          public void run(){
+		       	 	guiUserl.gettextAreaRead().setText( osComServ.exeCommand() );
+				}
+			};
+			thread.start();
+	   	}
 		if( ae.getSource() == guiUserl.getCboxModelo()){
 			int index = guiUserl.getCboxModelo().getSelectedIndex(); 
 			selected = (String)guiUserl.getCboxModelo().getItemAt( index );
 			System.out.println("Soy un JComboBOx: "+selected);
+			if( selected.equals("Comando") ){
+				guiUserl.getBotonWrite().setVisible(false);
+				guiUserl.getBotonRead().setVisible(false);
+				guiUserl.getBotonDel().setVisible(false);
+				guiUserl.getBotonCommand().setVisible(true);		
+			}
 	   	}
 
 	}
@@ -90,6 +105,7 @@ public class Controller implements ActionListener{
 		guiUserl.getBotonWrite().addActionListener(this);
 		guiUserl.getBotonRead().addActionListener(this);
 		guiUserl.getBotonDel().addActionListener(this);
+		guiUserl.getBotonCommand().addActionListener(this);
 		listener = new CaretListener() {
 			public void caretUpdate(CaretEvent caretEvent) {
 				stmpg = "";
