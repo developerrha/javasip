@@ -1,9 +1,11 @@
 
 package pkgdir.control;
 
+import java.io.File;
 import pkgdir.modelo.FileServices;
 import pkgdir.modelo.MysqlServices;
 import pkgdir.modelo.OsCommandServices;
+import pkgdir.modelo.TextEncryption;
 import pkgdir.graficos.GuiUser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +19,7 @@ public class Controller implements ActionListener{
 	private FileServices fileServices;
 	private MysqlServices msqlserv;
 	private OsCommandServices osComServ;	
+	private TextEncryption textEncryption;
 	private CaretListener listener;
 	private String stmpg;
 	private String selected;
@@ -48,14 +51,18 @@ public class Controller implements ActionListener{
      */
     @Override
 	public void actionPerformed(ActionEvent ae) {
+		/*
+		* Evento sobre boton Escribir
+		*/
 		if( ae.getSource() == guiUserl.getBotonWrite()){
 			fileServices = new FileServices();
 			String stmp = guiUserl.getTextField().getText();
 			fileServices.writeFile( stmp, "historial.txt" );
 			guiUserl.getTextField().setText("");
-			
-			
 	   	}
+		/*
+		* Evento sobre boton Leer
+		*/
 		if( ae.getSource() == guiUserl.getBotonRead()){
 			if( selected == null ){
 				int index = guiUserl.getCboxModelo().getSelectedIndex(); 
@@ -63,7 +70,8 @@ public class Controller implements ActionListener{
 				guiUserl.getBotonWrite().setVisible( true );
 				guiUserl.getBotonRead().setVisible( true );
 				guiUserl.getBotonDel().setVisible( true);
-				guiUserl.getBotonCommand().setVisible(false);		
+				guiUserl.getBotonCommand().setVisible(false);	
+				guiUserl.getBotonEncrypt().setVisible(false);	
 				guiUserl.getTextField().setVisible( true );	
 			}
 			if( selected.equals( "Archivo plano" ) ){
@@ -75,10 +83,36 @@ public class Controller implements ActionListener{
 				guiUserl.gettextAreaRead().setText( msqlserv.getDataFromMysql() );	
 			}
 	   	}
+		/*
+		* Evento sobre boton Borrar
+		*/
 		if( ae.getSource() == guiUserl.getBotonDel()){
 			fileServices = new FileServices();
 			fileServices.delText( "historial.txt", stmpg);
 	   	}
+		/*
+		* Evento sobre boton Encriptar
+		*/
+		if( ae.getSource() == guiUserl.getBotonEncrypt() ){
+			textEncryption = new TextEncryption();
+			textEncryption.doCrypto(1, "lassorh", new File("historial.txt"), new File("historialEnc.txt"));
+			File ftempE = new File( "historialEnc.txt" );
+			if( ftempE.exists() )
+				guiUserl.gettextAreaRead().append( "Encriptacion realizada\n" );
+			else
+				guiUserl.gettextAreaRead().append( "Encriptacion fallo\n" );
+			textEncryption.doCrypto(2, "lassorh", new File("historialEnc.txt"), new File("historialDec.txt"));
+			File ftempD = new File( "historialDec.txt" );
+			if( ftempD.exists() )
+				guiUserl.gettextAreaRead().append( "Desencriptacion realizada\n" );
+			else
+				guiUserl.gettextAreaRead().append( "Desencriptacion fallo\n" );
+
+	   	}
+
+		/*
+		* Evento sobre boton Comando
+		*/
 		if( ae.getSource() == guiUserl.getBotonCommand()){
 			thread = new Thread(){
 		          public void run(){
@@ -87,6 +121,10 @@ public class Controller implements ActionListener{
 			};
 			thread.start();
 	   	}
+		/*
+		* Evento sobre Lista de tares JComboBox
+		*/
+
 		if( ae.getSource() == guiUserl.getCboxModelo()){
 			int index = guiUserl.getCboxModelo().getSelectedIndex(); 
 			selected = (String)guiUserl.getCboxModelo().getItemAt( index );
@@ -96,6 +134,7 @@ public class Controller implements ActionListener{
 				guiUserl.getBotonRead().setVisible( true );
 				guiUserl.getBotonDel().setVisible( true);
 				guiUserl.getBotonCommand().setVisible(false);		
+				guiUserl.getBotonEncrypt().setVisible(false);
 				guiUserl.getJpanelTxt().setVisible( true );		
 			}
 			if( selected.equals( "Base de datos" ) ){
@@ -104,13 +143,23 @@ public class Controller implements ActionListener{
 				guiUserl.getBotonDel().setVisible( false );
 				guiUserl.getBotonCommand().setVisible( false );		
 				guiUserl.getJpanelTxt().setVisible( false );		
+				guiUserl.getBotonEncrypt().setVisible(false);
 			}
 			if( selected.equals("Comando") ){
 				guiUserl.getBotonWrite().setVisible(false);
 				guiUserl.getBotonRead().setVisible(false);
 				guiUserl.getBotonDel().setVisible(false);
+				guiUserl.getBotonEncrypt().setVisible(false);
 				guiUserl.getBotonCommand().setVisible(true);		
 				guiUserl.getJpanelTxt().setVisible( true );		
+			}
+			if( selected.equals("Encriptacion") ){
+				guiUserl.getBotonWrite().setVisible(false);
+				guiUserl.getBotonRead().setVisible(false);
+				guiUserl.getBotonDel().setVisible(false);
+				guiUserl.getBotonCommand().setVisible(false);		
+				guiUserl.getBotonEncrypt().setVisible(true);
+				guiUserl.getJpanelTxt().setVisible( false );		
 			}
 	   	}
 
@@ -126,6 +175,10 @@ public class Controller implements ActionListener{
 		guiUserl.getBotonRead().addActionListener(this);
 		guiUserl.getBotonDel().addActionListener(this);
 		guiUserl.getBotonCommand().addActionListener(this);
+		guiUserl.getBotonEncrypt().addActionListener(this);
+		/*
+		* Obtiene la seleccion delusuario soble el JComboBox para Borrar
+		*/
 		listener = new CaretListener() {
 			public void caretUpdate(CaretEvent caretEvent) {
 				stmpg = "";

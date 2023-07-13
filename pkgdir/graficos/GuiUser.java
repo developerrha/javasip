@@ -18,6 +18,7 @@ public class GuiUser extends JFrame{
 	private JComboBox<String> cbModelo;
 	private JButton butWrite;
 	private JButton butCommand;
+	private JButton butEncrypt;
 	private JButton butRead;
 	private JButton butDel;
 	private JLabel labWrite;
@@ -63,7 +64,7 @@ public class GuiUser extends JFrame{
 		try{
 			jtmpCb.setLayout(new BoxLayout(jtmpCb,BoxLayout.X_AXIS));			
 			labTasks = new JLabel("Tareas:  ");
-			String modeloItems[]={"Archivo plano","Base de datos", "Comando"};        
+			String modeloItems[]={"Archivo plano","Base de datos", "Comando", "Encriptacion"};        
     			cbModelo = new JComboBox<>(modeloItems); 
 			labTasks.setLabelFor( cbModelo );
 			cbModelo.setBackground(Color.WHITE);
@@ -81,14 +82,36 @@ public class GuiUser extends JFrame{
 	}
 
 	/**
+	*Metodo que pinta el JButton butEncrypt
+	*Retorna JButton
+	*/
+	private JButton drawButtonEncrypt(){
+		try{
+		     URL url = GuiUser.class.getResource("../../res/encript_1.png");
+		     BufferedImage img = ImageIO.read(url);
+			butEncrypt = new JButton("Encriptacion",new ImageIcon(img));
+			butEncrypt.setBackground(Color.WHITE);
+			butEncrypt.setFont(butEncrypt.getFont().deriveFont(Font.BOLD | Font.ITALIC));
+			butEncrypt.setAlignmentX(panel.CENTER_ALIGNMENT);
+			butEncrypt.setVisible(false);
+			butEncrypt.setFocusPainted(true);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return butEncrypt;
+	}
+
+
+
+	/**
 	*Metodo que pinta el JButton butCommand
 	*Retorna JButton
 	*/
 	private JButton drawButtonCommand(){
 		try{
-		     URL url = GuiUser.class.getResource("../../res/write_1.png");
+		     URL url = GuiUser.class.getResource("../../res/run_1.png");
 		     BufferedImage img = ImageIO.read(url);
-			butCommand = new JButton("Comando",new ImageIcon(img));
+			butCommand = new JButton("Ejecutar",new ImageIcon(img));
 			butCommand.setBackground(Color.WHITE);
 			butCommand.setFont(butCommand.getFont().deriveFont(Font.BOLD | Font.ITALIC));
 			butCommand.setAlignmentX(panel.CENTER_ALIGNMENT);
@@ -209,6 +232,8 @@ public class GuiUser extends JFrame{
 			panel.setBackground(Color.CYAN);
 			panel.add(drawCboxModelo());
 			panel.add(Box.createVerticalStrut(5));
+			panel.add(drawButtonEncrypt());
+			panel.add(Box.createVerticalStrut(5));
 			panel.add(drawTextfWrite());
 			panel.add(Box.createVerticalStrut(5));
 			panel.add(drawButtonWrite());
@@ -256,6 +281,13 @@ public class GuiUser extends JFrame{
      */
     public JButton getBotonDel() {
         return butDel;
+    }
+	/**
+     * Devuelve el boton Encrypt
+     * @return
+     */
+    public JButton getBotonEncrypt() {
+        return butEncrypt;
     }
 
 	/**
