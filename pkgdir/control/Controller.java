@@ -5,6 +5,7 @@ import pkgdir.modelo.MysqlServices;
 import pkgdir.graficos.GuiMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.Box;
 
 
 public class Controller implements ActionListener{
@@ -58,11 +59,37 @@ public class Controller implements ActionListener{
 			System.exit(0);
 	   	}
 		/*
+		* Evento sobre item Txt
+		*/
+		if( ae.getSource() == guiMenul.getItemTxt()){
+			System.out.println("Soy Txt");
+			guiMenul.getMainJPanel().removeAll();
+			guiMenul.getMainJPanel().add(Box.createVerticalStrut(10));
+			guiMenul.getMainJPanel().add(  guiMenul.getTxtJPanel() );	
+			guiMenul.getMainJPanel().revalidate();
+			guiMenul.getMainJPanel().repaint();
+			selected = guiMenul.getItemTxt().getText();
+	   	}
+		/*
 		* Evento sobre item DB
 		*/
 		if( ae.getSource() == guiMenul.getItemDB()){
 			System.out.println("Soy BD");
+			guiMenul.getMainJPanel().removeAll();
+			guiMenul.getMainJPanel().add(Box.createVerticalStrut(10));
 			guiMenul.getMainJPanel().add(  guiMenul.getDBJPanel() );	
+			guiMenul.getMainJPanel().revalidate();
+			guiMenul.getMainJPanel().repaint();
+			selected = guiMenul.getItemDB().getText();
+	   	}
+		/*
+		* Evento sobre item salir
+		*/
+		if( ae.getSource() == guiMenul.getItemEncr()){
+			System.out.println("Soy Encry");
+			guiMenul.getMainJPanel().removeAll();
+			guiMenul.getMainJPanel().add(Box.createVerticalStrut(10));
+			guiMenul.getMainJPanel().add(  guiMenul.getEncryptJPanel() );	
 			guiMenul.getMainJPanel().revalidate();
 			guiMenul.getMainJPanel().repaint();
 			selected = guiMenul.getItemDB().getText();
@@ -75,9 +102,10 @@ public class Controller implements ActionListener{
      */
 	private void agregarEventos(){
 		guiMenul.getItemExit().addActionListener(this);
+		guiMenul.getItemTxt().addActionListener(this);
 		guiMenul.getItemDB().addActionListener(this);
 		guiMenul.getBotonRead().addActionListener(this);
-
+		guiMenul.getItemEncr().addActionListener(this);
 	}
 
 

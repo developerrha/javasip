@@ -17,7 +17,10 @@ public class GuiMenu extends JFrame{
 
 	public String title;
 	private JPanel panel;
+	private JPanel jtmp;
 	private JPanel panelDB;
+	private JPanel panelTxt;
+	private JPanel panelEncrypt;
 	private JMenuBar menuBar;
 	private JMenu menuTasks;
 	private JMenu menuSet;
@@ -27,6 +30,10 @@ public class GuiMenu extends JFrame{
 	private JMenuItem itemCommand;
 	private JMenuItem itemEncrypt;
 	private JButton butRead;
+	private JButton butWrite;
+	private JButton butEncrypt;
+	private JLabel labWrite;
+	private JTextField texfWrite;
 	private JTextArea areaRead;
 	private JScrollPane scrollRead;
 	
@@ -53,6 +60,8 @@ public class GuiMenu extends JFrame{
 			this.setJMenuBar( drawMenuBar() );
 			this.setVisible(true);
 			drawPanDB();
+			drawPanTxt();
+			drawPanEncrypt();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -79,7 +88,24 @@ public class GuiMenu extends JFrame{
 		menuTasks.add( itemExit );
 		return menuBar;
 	}
-
+	/**
+	*Metodo que pinta el JButton butWrite
+	*Retorna JButton
+	*/
+	private JButton drawButtonWrite(){
+		try{
+		     URL url = GuiMenu.class.getResource("../../res/write_bl.png");
+		     BufferedImage img = ImageIO.read(url);
+			butWrite = new JButton("Escribir",new ImageIcon(img));
+			butWrite.setBackground( new Color( 168, 168, 73, 30 ) );
+			butWrite.setFont(butWrite.getFont().deriveFont(Font.BOLD | Font.ITALIC));
+			butWrite.setAlignmentX(panel.CENTER_ALIGNMENT);
+			butWrite.setFocusPainted(true);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return butWrite;
+	}
 	/**
 	*Metodo que pinta el JButton butRead
 	*Retorna JButton
@@ -99,6 +125,47 @@ public class GuiMenu extends JFrame{
 		return butRead;
 	}
 	/**
+	*Metodo que pinta el JButton butEncrypt
+	*Retorna JButton
+	*/
+	private JButton drawButtonEncrypt(){
+		try{
+		     URL url = GuiMenu.class.getResource("../../res/encrypt_bl.png");
+		     BufferedImage img = ImageIO.read(url);
+			butEncrypt = new JButton("Encriptacion",new ImageIcon(img));
+			butEncrypt.setBackground( new Color( 168, 168, 73, 50 ) );
+			butEncrypt.setFont(butEncrypt.getFont().deriveFont(Font.BOLD | Font.ITALIC));
+			butEncrypt.setAlignmentX(panel.CENTER_ALIGNMENT);
+			butEncrypt.setFocusPainted(true);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return butEncrypt;
+	}
+	/**
+	*Metodo que pinta el JTextField texffWrite Jlabel dentro de un JPanel
+	*Retorna JTextField
+	*/
+	private JPanel drawTextfWrite(){
+		jtmp = new JPanel();
+		jtmp.setBackground( new Color( 168, 168, 73, 30 ) );
+		try{
+		     jtmp.setLayout(new BoxLayout(jtmp,BoxLayout.X_AXIS));			
+			labWrite = new JLabel("Texto:  ");
+			texfWrite = new JTextField();
+			texfWrite.setBackground( new Color( 168, 168, 73, 30 ) );
+			labWrite.setLabelFor(texfWrite);
+			texfWrite.setFont(new Font("Serif", Font.PLAIN, 16));
+			texfWrite.setPreferredSize(new Dimension(350, 30));
+		     texfWrite.setMaximumSize(new Dimension(350, 30));
+			jtmp.add(labWrite);
+			jtmp.add(texfWrite);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return jtmp;
+	}
+	/**
 	*Metodo que pinta el JTextArea dentro de un JScrollPane
 	*Retorna JScrollPane
 	*/
@@ -109,14 +176,40 @@ public class GuiMenu extends JFrame{
 			areaRead.setBackground( new Color( 168, 168, 73, 30 ) );
 			scrollRead = new JScrollPane(areaRead);
 			areaRead.setFont(new Font("Serif", Font.PLAIN, 14));
-			scrollRead.setPreferredSize(new Dimension(550, 160));
-			scrollRead.setMaximumSize(new Dimension(550, 160));
+			scrollRead.setPreferredSize(new Dimension(550, 260));
+			scrollRead.setMaximumSize(new Dimension(550, 260));
 			scrollRead.getViewport().setOpaque(false);
 			scrollRead.setOpaque(false);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return scrollRead;
+	}
+
+	/**
+	*Metodo que pinta el JPanel de Archivo plano
+	*Retorna JPanel
+	*/
+
+	private JPanel drawPanTxt(){
+		try{
+			panelTxt = new JPanel();
+		     panelTxt.setLayout(new BoxLayout(panelTxt,BoxLayout.Y_AXIS));
+			panelTxt.setBackground( new Color( 146, 168, 73 , 30 ) );
+			panelTxt.setPreferredSize(new Dimension(750, 450));
+		     panelTxt.setMaximumSize(new Dimension(750, 450));
+			panelTxt.add(Box.createVerticalStrut(10));
+			panelTxt.add( drawTextfWrite() );
+			panelTxt.add(Box.createVerticalStrut(10));
+			panelTxt.add( drawButtonWrite() );
+			panelTxt.add(Box.createVerticalStrut(10));
+			panelTxt.add( drawButtonRead() );
+			panelTxt.add(Box.createVerticalStrut(10));
+			panelTxt.add(drawAreaRead());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return panelTxt;
 	}
 
 	/**
@@ -140,7 +233,27 @@ public class GuiMenu extends JFrame{
 		}
 		return panelDB;
 	}
+	/**
+	*Metodo que pinta el JPanel de Encrypt
+	*Retorna JPanel
+	*/
 
+	private JPanel drawPanEncrypt(){
+		try{
+			panelEncrypt = new JPanel();
+		     panelEncrypt.setLayout(new BoxLayout(panelEncrypt,BoxLayout.Y_AXIS));
+			panelEncrypt.setBackground( new Color( 146, 168, 73 , 30 ) );
+			panelEncrypt.setPreferredSize(new Dimension(750, 450));
+		     panelEncrypt.setMaximumSize(new Dimension(750, 450));
+			panelEncrypt.add(Box.createVerticalStrut(10));
+			panelEncrypt.add( drawButtonEncrypt() );
+			panelEncrypt.add(Box.createVerticalStrut(10));
+			panelEncrypt.add(drawAreaRead());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return panelEncrypt;
+	}
 	/**
 	*Metodo que pinta el JPanel
 	*Retorna JPanel
@@ -167,12 +280,31 @@ public class GuiMenu extends JFrame{
         return itemExit;
     }
 	/**
-     * Devuelve el Item Archivo plano
+     * Devuelve el Item Txt
+     * @return
+     */
+    public JMenuItem getItemTxt() {
+        return itemTxtFile;
+    }
+
+	/**
+     * Devuelve el Item DB
      * @return
      */
     public JMenuItem getItemDB() {
         return itemDataBas;
     }
+
+	/**
+     * Devuelve el Item DB
+     * @return
+     */
+    public JMenuItem getItemEncr() {
+        return itemEncrypt;
+    }
+
+
+
 	/**
      * Devuelve el main JPanel
      * @return
@@ -187,6 +319,20 @@ public class GuiMenu extends JFrame{
      */
     public JPanel getDBJPanel() {
         return panelDB;
+    }
+	/**
+     * Devuelve el Txt JPanel
+     * @return
+     */
+    public JPanel getTxtJPanel() {
+        return panelTxt;
+    }
+	/**
+     * Devuelve el Encrypt JPanel
+     * @return
+     */
+    public JPanel getEncryptJPanel() {
+        return panelEncrypt;
     }
 
 	/**
