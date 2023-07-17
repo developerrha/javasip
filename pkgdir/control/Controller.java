@@ -1,18 +1,29 @@
 
 package pkgdir.control;
 
+import java.io.File;
+import pkgdir.modelo.FileServices;
 import pkgdir.modelo.MysqlServices;
+import pkgdir.modelo.TextEncryption;
+import pkgdir.modelo.OsCommandServices;
 import pkgdir.graficos.GuiMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 import javax.swing.Box;
 
 
 public class Controller implements ActionListener{
 
 	private GuiMenu guiMenul;
+	private FileServices fileServices;
 	private MysqlServices msqlserv;
-	private String selected;
+	private TextEncryption textEncryption;
+	private OsCommandServices osComServ;
+	private String stmpg;
+	private CaretListener listener;
+	private Thread thread;
 
 	/**
      * Constructor sin parametros
@@ -29,7 +40,8 @@ public class Controller implements ActionListener{
 	public Controller(GuiMenu guiMenu) {
 		super();
 		this.guiMenul = guiMenu;
-		agregarEventos();		
+		agregarEventos();
+		osComServ = new OsCommandServices();		
 	}
 
 	/**
@@ -40,17 +52,67 @@ public class Controller implements ActionListener{
     @Override
 	public void actionPerformed(ActionEvent ae) {
 		/*
-		* Evento sobre boton Leer
+		* Evento sobre boton LeerTxt
 		*/
-		if( ae.getSource() == guiMenul.getBotonRead()){
-			if( selected == null ){
-				return;
-			}
-			if( selected.equals( "Archivo plano" ) ){
-			}else if( selected.equals( "Base de datos" ) ){
-				msqlserv = new MysqlServices();
-				guiMenul.gettextAreaRead().setText( msqlserv.getDataFromMysql() );	
-			}
+		if( ae.getSource() == guiMenul.getBotonReadTxt()){
+			fileServices = new FileServices();
+			String stmp = fileServices.readFile( "historial.txt" );	
+			(guiMenul.gettextAreaRead( guiMenul.getTxtJPanel() )).setText( stmp );	
+	   	}
+		/*
+		* Evento sobre boton LeerDb
+		*/
+		if( ae.getSource() == guiMenul.getBotonReadDb()){
+			msqlserv = new MysqlServices();
+			(guiMenul.gettextAreaRead( guiMenul.getDBJPanel() )).setText( msqlserv.getDataFromMysql() );	
+	   	}
+		/*
+		* Evento sobre boton Escribir Bd
+		*/
+		if( ae.getSource() == guiMenul.getBotonWrite()){
+			fileServices = new FileServices();
+			String stmp = guiMenul.getTextField( guiMenul.getTxtJPanel() ).getText();
+			fileServices.writeFile( stmp, "historial.txt" );
+			guiMenul.getTextField( guiMenul.getTxtJPanel() ).setText("");
+	   	}
+		/*
+		* Evento sobre boton Borrar Txt
+		*/
+		if( ae.getSource() == guiMenul.getBotonDel()){
+			fileServices = new FileServices();
+			fileServices.delText( "historial.txt", stmpg);
+	   	}
+		/*
+		* Evento sobre boton Comando
+		*/
+		if( ae.getSource() == guiMenul.getBotonCommand()){
+			thread = new Thread(){
+		          public void run(){
+					String data = guiMenul.getTextField( guiMenul.getCommandJPanel() ).getText();
+					System.out.println("data: "+data);
+		       	 	guiMenul.gettextAreaRead( guiMenul.getCommandJPanel() ).setText( osComServ.exeCommand( data  ) );
+				}
+			};
+			thread.start();
+	   	}
+		/*
+		* Evento sobre boton Encriptar
+		*/
+		if( ae.getSource() == guiMenul.getBotonEncrypt() ){
+			textEncryption = new TextEncryption();
+			textEncryption.doCrypto(1, "lassorh", new File("historial.txt"), new File("historialEnc.txt"));
+			File ftempE = new File( "historialEnc.txt" );
+			if( ftempE.exists() )
+				guiMenul.gettextAreaRead( guiMenul.getEncryptJPanel() ).setText( "Encriptacion realizada\n" );
+			else
+				guiMenul.gettextAreaRead( guiMenul.getEncryptJPanel() ).append( "Encriptacion fallo\n" );
+			textEncryption.doCrypto(2, "lassorh", new File("historialEnc.txt"), new File("historialDec.txt"));
+			File ftempD = new File( "historialDec.txt" );
+			if( ftempD.exists() )
+				guiMenul.gettextAreaRead( guiMenul.getEncryptJPanel() ).append( "Desencriptacion realizada\n" );
+			else
+				guiMenul.gettextAreaRead( guiMenul.getEncryptJPanel() ).append( "Desencriptacion fallo\n" );
+
 	   	}
 		/*
 		* Evento sobre item salir
@@ -62,26 +124,33 @@ public class Controller implements ActionListener{
 		* Evento sobre item Txt
 		*/
 		if( ae.getSource() == guiMenul.getItemTxt()){
-			System.out.println("Soy Txt");
 			guiMenul.getMainJPanel().removeAll();
 			guiMenul.getMainJPanel().add(Box.createVerticalStrut(10));
 			guiMenul.getMainJPanel().add(  guiMenul.getTxtJPanel() );	
 			guiMenul.getMainJPanel().revalidate();
 			guiMenul.getMainJPanel().repaint();
-			selected = guiMenul.getItemTxt().getText();
 	   	}
 		/*
 		* Evento sobre item DB
 		*/
 		if( ae.getSource() == guiMenul.getItemDB()){
-			System.out.println("Soy BD");
 			guiMenul.getMainJPanel().removeAll();
 			guiMenul.getMainJPanel().add(Box.createVerticalStrut(10));
 			guiMenul.getMainJPanel().add(  guiMenul.getDBJPanel() );	
 			guiMenul.getMainJPanel().revalidate();
 			guiMenul.getMainJPanel().repaint();
-			selected = guiMenul.getItemDB().getText();
 	   	}
+		/*
+		* Evento sobre item Command
+		*/
+		if( ae.getSource() == guiMenul.getItemCommand()){
+			guiMenul.getMainJPanel().removeAll();
+			guiMenul.getMainJPanel().add(Box.createVerticalStrut(10));
+			guiMenul.getMainJPanel().add(  guiMenul.getCommandJPanel() );	
+			guiMenul.getMainJPanel().revalidate();
+			guiMenul.getMainJPanel().repaint();
+	   	}
+
 		/*
 		* Evento sobre item salir
 		*/
@@ -92,7 +161,6 @@ public class Controller implements ActionListener{
 			guiMenul.getMainJPanel().add(  guiMenul.getEncryptJPanel() );	
 			guiMenul.getMainJPanel().revalidate();
 			guiMenul.getMainJPanel().repaint();
-			selected = guiMenul.getItemDB().getText();
 	   	}
 	}
 
@@ -104,8 +172,31 @@ public class Controller implements ActionListener{
 		guiMenul.getItemExit().addActionListener(this);
 		guiMenul.getItemTxt().addActionListener(this);
 		guiMenul.getItemDB().addActionListener(this);
-		guiMenul.getBotonRead().addActionListener(this);
 		guiMenul.getItemEncr().addActionListener(this);
+		guiMenul.getItemCommand().addActionListener(this);
+		guiMenul.getBotonReadTxt().addActionListener(this);
+		guiMenul.getBotonReadDb().addActionListener(this);
+		guiMenul.getBotonWrite().addActionListener(this);
+		guiMenul.getBotonDel().addActionListener(this);
+		guiMenul.getBotonCommand().addActionListener(this);
+		guiMenul.getBotonEncrypt().addActionListener(this);
+		/*
+		* Obtiene la seleccion delusuario soble el TextArea para Borrar
+		*/
+		listener = new CaretListener() {
+			public void caretUpdate(CaretEvent caretEvent) {
+				stmpg = "";
+				int posM = caretEvent.getMark();
+				int posD = caretEvent.getDot();
+				if( posD > posM){
+					stmpg = (guiMenul.gettextAreaRead( guiMenul.getTxtJPanel() ).getText()).substring( posM, posD );					
+				}else{
+					stmpg = (guiMenul.gettextAreaRead( guiMenul.getTxtJPanel() ).getText()).substring( posD, posM );					
+				}	
+				System.out.println("stmpg: "+stmpg);	
+			}
+	     };
+		guiMenul.gettextAreaRead( guiMenul.getTxtJPanel() ).addCaretListener(listener);
 	}
 
 

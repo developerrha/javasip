@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.Dimension;
 import javax.imageio.ImageIO;
 import java.net.URL;
+import java.awt.Component;
 
 
 /**
@@ -20,6 +21,7 @@ public class GuiMenu extends JFrame{
 	private JPanel jtmp;
 	private JPanel panelDB;
 	private JPanel panelTxt;
+	private JPanel panelCommand;
 	private JPanel panelEncrypt;
 	private JMenuBar menuBar;
 	private JMenu menuTasks;
@@ -29,11 +31,14 @@ public class GuiMenu extends JFrame{
 	private JMenuItem itemExit;
 	private JMenuItem itemCommand;
 	private JMenuItem itemEncrypt;
-	private JButton butRead;
+	private JButton butReadTxt;
+	private JButton butReadDb;
 	private JButton butWrite;
+	private JButton butDel;
+	private JButton butCommand;
 	private JButton butEncrypt;
-	private JLabel labWrite;
-	private JTextField texfWrite;
+//	private JLabel labWrite;
+//	private JTextField texfWrite;
 	private JTextArea areaRead;
 	private JScrollPane scrollRead;
 	
@@ -61,6 +66,7 @@ public class GuiMenu extends JFrame{
 			this.setVisible(true);
 			drawPanDB();
 			drawPanTxt();
+			drawPanCommand();
 			drawPanEncrypt();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -89,14 +95,14 @@ public class GuiMenu extends JFrame{
 		return menuBar;
 	}
 	/**
-	*Metodo que pinta el JButton butWrite
+	*Metodo que pinta el JButton butWrite Txt
 	*Retorna JButton
 	*/
 	private JButton drawButtonWrite(){
 		try{
 		     URL url = GuiMenu.class.getResource("../../res/write_bl.png");
 		     BufferedImage img = ImageIO.read(url);
-			butWrite = new JButton("Escribir",new ImageIcon(img));
+			butWrite = new JButton("Escribir en Archivo",new ImageIcon(img));
 			butWrite.setBackground( new Color( 168, 168, 73, 30 ) );
 			butWrite.setFont(butWrite.getFont().deriveFont(Font.BOLD | Font.ITALIC));
 			butWrite.setAlignmentX(panel.CENTER_ALIGNMENT);
@@ -107,22 +113,76 @@ public class GuiMenu extends JFrame{
 		return butWrite;
 	}
 	/**
-	*Metodo que pinta el JButton butRead
+	*Metodo que pinta el JButton butReadTxt
 	*Retorna JButton
 	*/
-	private JButton drawButtonRead(){
+	private JButton drawButtonReadTxt(){
 		try{
 		     URL url = GuiMenu.class.getResource("../../res/read_bl.png");
 		     BufferedImage img = ImageIO.read(url);
-			butRead = new JButton("Leer",new ImageIcon(img));
-			butRead.setBackground( new Color( 168, 168, 73, 50 ) );
-			butRead.setFont(butRead.getFont().deriveFont(Font.BOLD | Font.ITALIC));
-			butRead.setAlignmentX(panel.CENTER_ALIGNMENT);
-			butRead.setFocusPainted(true);
+			butReadTxt = new JButton("Leer Archivo",new ImageIcon(img));
+			butReadTxt.setBackground( new Color( 168, 168, 73, 50 ) );
+			butReadTxt.setFont(butReadTxt.getFont().deriveFont(Font.BOLD | Font.ITALIC));
+			butReadTxt.setAlignmentX(panel.CENTER_ALIGNMENT);
+			butReadTxt.setFocusPainted(true);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return butRead;
+		return butReadTxt;
+	}
+	/**
+	*Metodo que pinta el JButton butDel
+	*Retorna JButton
+	*/
+	private JButton drawButtonDel(){
+		try{
+		     URL url = GuiMenu.class.getResource("../../res/borrar_bl.png");
+		     BufferedImage img = ImageIO.read(url);
+			butDel = new JButton("Borrar Seleccion",new ImageIcon(img));
+			butDel.setBackground( new Color( 168, 168, 73, 50 ) );
+			butDel.setFont(butDel.getFont().deriveFont(Font.BOLD | Font.ITALIC));
+			butDel.setAlignmentX(panel.CENTER_ALIGNMENT);
+			butDel.setFocusPainted(true);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return butDel;
+	}
+	/**
+	*Metodo que pinta el JButton butReadDb
+	*Retorna JButton
+	*/
+	private JButton drawButtonReadDb(){
+		try{
+		     URL url = GuiMenu.class.getResource("../../res/read_bl.png");
+		     BufferedImage img = ImageIO.read(url);
+			butReadDb = new JButton("Ejecutar Query",new ImageIcon(img));
+			butReadDb.setBackground( new Color( 168, 168, 73, 50 ) );
+			butReadDb.setFont(butReadDb.getFont().deriveFont(Font.BOLD | Font.ITALIC));
+			butReadDb.setAlignmentX(panel.CENTER_ALIGNMENT);
+			butReadDb.setFocusPainted(true);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return butReadDb;
+	}
+	/**
+	*Metodo que pinta el JButton butCommand
+	*Retorna JButton
+	*/
+	private JButton drawButtonCommand(){
+		try{
+		     URL url = GuiMenu.class.getResource("../../res/run_bl.png");
+		     BufferedImage img = ImageIO.read(url);
+			butCommand = new JButton("Ejecutar Comando",new ImageIcon(img));
+			butCommand.setBackground( new Color( 168, 168, 73, 50 ) );
+			butCommand.setFont(butCommand.getFont().deriveFont(Font.BOLD | Font.ITALIC));
+			butCommand.setAlignmentX(panel.CENTER_ALIGNMENT);
+			butCommand.setFocusPainted(true);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return butCommand;
 	}
 	/**
 	*Metodo que pinta el JButton butEncrypt
@@ -151,8 +211,8 @@ public class GuiMenu extends JFrame{
 		jtmp.setBackground( new Color( 168, 168, 73, 30 ) );
 		try{
 		     jtmp.setLayout(new BoxLayout(jtmp,BoxLayout.X_AXIS));			
-			labWrite = new JLabel("Texto:  ");
-			texfWrite = new JTextField();
+			JLabel labWrite = new JLabel("Texto:  ");
+			JTextField texfWrite = new JTextField();
 			texfWrite.setBackground( new Color( 168, 168, 73, 30 ) );
 			labWrite.setLabelFor(texfWrite);
 			texfWrite.setFont(new Font("Serif", Font.PLAIN, 16));
@@ -170,20 +230,21 @@ public class GuiMenu extends JFrame{
 	*Retorna JScrollPane
 	*/
 	private JScrollPane drawAreaRead(){
+		JScrollPane scrollReadL = new JScrollPane();
 		try{
-			areaRead = new JTextArea();
-			areaRead.setEditable(false);
-			areaRead.setBackground( new Color( 168, 168, 73, 30 ) );
-			scrollRead = new JScrollPane(areaRead);
-			areaRead.setFont(new Font("Serif", Font.PLAIN, 14));
-			scrollRead.setPreferredSize(new Dimension(550, 260));
-			scrollRead.setMaximumSize(new Dimension(550, 260));
-			scrollRead.getViewport().setOpaque(false);
-			scrollRead.setOpaque(false);
+			JTextArea areaReadL = new JTextArea();
+			areaReadL.setEditable(false);
+			areaReadL.setBackground( new Color( 168, 168, 73 ) );
+			scrollReadL = new JScrollPane(areaReadL);
+			areaReadL.setFont(new Font("Serif", Font.PLAIN, 14));
+			scrollReadL.setPreferredSize(new Dimension(550, 260));
+			scrollReadL.setMaximumSize(new Dimension(550, 260));
+			scrollReadL.getViewport().setOpaque(false);
+			scrollReadL.setOpaque(false);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return scrollRead;
+		return scrollReadL;
 	}
 
 	/**
@@ -203,9 +264,12 @@ public class GuiMenu extends JFrame{
 			panelTxt.add(Box.createVerticalStrut(10));
 			panelTxt.add( drawButtonWrite() );
 			panelTxt.add(Box.createVerticalStrut(10));
-			panelTxt.add( drawButtonRead() );
+			panelTxt.add( drawButtonReadTxt() );
 			panelTxt.add(Box.createVerticalStrut(10));
 			panelTxt.add(drawAreaRead());
+			panelTxt.add(Box.createVerticalStrut(10));
+			panelTxt.add(drawButtonDel());
+
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -225,13 +289,36 @@ public class GuiMenu extends JFrame{
 			panelDB.setPreferredSize(new Dimension(750, 450));
 		     panelDB.setMaximumSize(new Dimension(750, 450));
 			panelDB.add(Box.createVerticalStrut(10));
-			panelDB.add( drawButtonRead() );
+			panelDB.add( drawButtonReadDb() );
 			panelDB.add(Box.createVerticalStrut(10));
 			panelDB.add(drawAreaRead());
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return panelDB;
+	}
+	/**
+	*Metodo que pinta el JPanel de Command
+	*Retorna JPanel
+	*/
+
+	private JPanel drawPanCommand(){
+		try{
+			panelCommand = new JPanel();
+		     panelCommand.setLayout(new BoxLayout(panelCommand,BoxLayout.Y_AXIS));
+			panelCommand.setBackground( new Color( 146, 168, 73 , 30 ) );
+			panelCommand.setPreferredSize(new Dimension(750, 450));
+		     panelCommand.setMaximumSize(new Dimension(750, 450));
+			panelCommand.add(Box.createVerticalStrut(10));
+			panelCommand.add( drawTextfWrite() );
+			panelCommand.add(Box.createVerticalStrut(10));
+			panelCommand.add( drawButtonCommand() );
+			panelCommand.add(Box.createVerticalStrut(10));
+			panelCommand.add(drawAreaRead());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return panelCommand;
 	}
 	/**
 	*Metodo que pinta el JPanel de Encrypt
@@ -294,17 +381,20 @@ public class GuiMenu extends JFrame{
     public JMenuItem getItemDB() {
         return itemDataBas;
     }
-
 	/**
-     * Devuelve el Item DB
+     * Devuelve el Item Command
+     * @return
+     */
+    public JMenuItem getItemCommand() {
+        return itemCommand;
+    }
+	/**
+     * Devuelve el Item Encrypt
      * @return
      */
     public JMenuItem getItemEncr() {
         return itemEncrypt;
     }
-
-
-
 	/**
      * Devuelve el main JPanel
      * @return
@@ -328,6 +418,13 @@ public class GuiMenu extends JFrame{
         return panelTxt;
     }
 	/**
+     * Devuelve el Command JPanel
+     * @return
+     */
+    public JPanel getCommandJPanel() {
+        return panelCommand;
+    }
+	/**
      * Devuelve el Encrypt JPanel
      * @return
      */
@@ -336,20 +433,97 @@ public class GuiMenu extends JFrame{
     }
 
 	/**
-     * Devuelve el boton leer
+     * Devuelve el boton leerTxt
      * @return
      */
-    public JButton getBotonRead() {
-        return butRead;
+    public JButton getBotonReadTxt() {
+        return butReadTxt;
     }
 
 	/**
-     * Devuelve el textarea read
+     * Devuelve el boton escribir Txt
      * @return
      */
-    public JTextArea gettextAreaRead() {
-        return areaRead;
+    public JButton getBotonWrite() {
+        return butWrite;
     }
+	/**
+     * Devuelve el boton borrar Txt
+     * @return
+     */
+    public JButton getBotonDel() {
+        return butDel;
+    }
+	/**
+     * Devuelve el boton leerDb
+     * @return
+     */
+    public JButton getBotonReadDb() {
+        return butReadDb;
+    }
+	/**
+     * Devuelve el boton comando
+     * @return
+     */
+    public JButton getBotonCommand() {
+        return butCommand;
+    }
+	/**
+     * Devuelve el boton Encrypt
+     * @return
+     */
+    public JButton getBotonEncrypt() {
+        return butEncrypt;
+    }
+	/**
+     * Devuelve el texField write Txt
+     * @return
+     */
+	public JTextField getTextField( JPanel pantemp ) {
+		boolean exit = false;
+		JPanel pantmpl;
+		JTextField texttmp = new JTextField();
+		Component lComps[] = pantemp.getComponents();
+		for (int i=0; i<lComps.length; i++) {
+			if( lComps[i] instanceof javax.swing.JPanel ) {
+				pantmpl = (JPanel) lComps[i];
+				Component[] comptxt = pantmpl.getComponents();
+				for (int j=0; j<comptxt.length; j++) {
+					if( comptxt[j] instanceof javax.swing.JTextField ) {
+						texttmp = (JTextField) comptxt[j];
+						exit = true;
+					}
+				}
+			}
+			if( exit )break;
+		}   			
+		return texttmp;
+	}
+	/**
+	* Devuelve el textarea read
+	* @return
+	*/
+	public JTextArea gettextAreaRead( JPanel pantemp ) {
+		boolean exit = false;
+		JScrollPane scrtmp;
+		JTextArea texttmp = new JTextArea();
+		Component lComps[] = pantemp.getComponents();
+		for (int i=0; i<lComps.length; i++) {
+			if( lComps[i] instanceof javax.swing.JScrollPane ) {
+				scrtmp = (JScrollPane) lComps[i];
+				JViewport viewport = (( JScrollPane )lComps[i]).getViewport();
+				Component[] comptxt = viewport.getComponents();
+				for (int j=0; j<comptxt.length; j++) {
+					if( comptxt[j] instanceof javax.swing.JTextArea ) {
+						texttmp = (JTextArea) comptxt[j];
+						exit = true;
+					}
+				}
+			}
+			if( exit )break;
+		}   			
+		return texttmp;
+	}
 
 
 
