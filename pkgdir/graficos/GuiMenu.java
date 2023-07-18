@@ -9,6 +9,10 @@ import java.awt.Dimension;
 import javax.imageio.ImageIO;
 import java.net.URL;
 import java.awt.Component;
+import java.awt.Toolkit;
+import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.metal.DefaultMetalTheme;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 
 /**
@@ -37,8 +41,6 @@ public class GuiMenu extends JFrame{
 	private JButton butDel;
 	private JButton butCommand;
 	private JButton butEncrypt;
-//	private JLabel labWrite;
-//	private JTextField texfWrite;
 	private JTextArea areaRead;
 	private JScrollPane scrollRead;
 	
@@ -55,6 +57,11 @@ public class GuiMenu extends JFrame{
 	*/
 	public void showWin(String titleG){
 		try{
+			this.setUndecorated(true);
+			this.getRootPane().setWindowDecorationStyle( JRootPane.FRAME );
+			MetalLookAndFeel.setCurrentTheme( new changeTheme() );
+			UIManager.setLookAndFeel(new MetalLookAndFeel());
+			SwingUtilities.updateComponentTreeUI(this);
 			this.title = titleG;
 			this.setSize(850, 550);
 			this.setTitle(title);
@@ -63,6 +70,7 @@ public class GuiMenu extends JFrame{
 			this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			this.getContentPane().add(drawPanel());
 			this.setJMenuBar( drawMenuBar() );
+			this.setIconImage( new ImageIcon( GuiMenu.class.getResource( "../../res/img_icon_litle.jpg" ) ).getImage()  );
 			this.setVisible(true);
 			drawPanDB();
 			drawPanTxt();
@@ -213,7 +221,7 @@ public class GuiMenu extends JFrame{
 		     jtmp.setLayout(new BoxLayout(jtmp,BoxLayout.X_AXIS));			
 			JLabel labWrite = new JLabel("Texto:  ");
 			JTextField texfWrite = new JTextField();
-			texfWrite.setBackground( new Color( 168, 168, 73, 30 ) );
+			texfWrite.setBackground( new Color( 168, 168, 73 ) );
 			labWrite.setLabelFor(texfWrite);
 			texfWrite.setFont(new Font("Serif", Font.PLAIN, 16));
 			texfWrite.setPreferredSize(new Dimension(350, 30));
@@ -524,9 +532,5 @@ public class GuiMenu extends JFrame{
 		}   			
 		return texttmp;
 	}
-
-
-
-
-
 }
+
