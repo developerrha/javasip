@@ -2,40 +2,53 @@ package pkgdir.modelo;
 
 import com.mysql.cj.jdbc.Driver; 
 import java.sql.*; 
+import java.util.List;
+import java.util.ArrayList;
 
 public class MysqlServices{  
 	public MysqlServices(){  
 	}  
 
-	public String getDataFromMysql(){
+	public Object[] getDataFromMysql( String query ){
+		Object[] objtemp = new Object[2];
 		String stmp = "";
 		try{  
 			System.out.println("Into MysqlServices class");
 			Class.forName("com.mysql.cj.jdbc.Driver");  
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/mintic?useSSL=false","rafael","Mysqlpsql43*");  
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/almacen?useSSL=false","homzode","Mysqlpsql43*");  
 			Statement stmt=con.createStatement();  
-			ResultSet rs=stmt.executeQuery("select * from reservation");  
-			int tmp1 = 0;
-			String tmp2 = "";
-			String tmp3 = 	"";
-			String tmp4 = 	"";
-			int tmp5 = 	0;
-			int tmp6 = 	0;	
+			ResultSet rs=stmt.executeQuery( query );  
+			objtemp[0] = getColumnsName( rs );
 			while(rs.next())  {
-				tmp1 = rs.getInt(1);
-				tmp2 = rs.getString(2);
-				tmp3 = rs.getString(3);
-				tmp4 = rs.getString(4);
-				tmp5 = rs.getInt(5);
-				tmp6 = rs.getInt(6);	
-				System.out.println( tmp1+" "+tmp2+" "+tmp3+" "+tmp4+" "+tmp5+" "+tmp6 );  
-				stmp += tmp1+" "+tmp2+" "+tmp3+" "+tmp4+" "+tmp5+" "+tmp6+"\n";
+				for(int i=0;i < ((String[])objtemp[0]).length;i++){
+					stmp += rs.getObject(i+1)+",";					
+				}
+				stmp += "\n";
 			}
 			con.close();  
+			objtemp[1] = stmp;
 		}catch(Exception e){ 
 			e.printStackTrace();
 		}
-		return stmp;
+		return objtemp;
+	}
+
+	public String[] getColumnsName( ResultSet rstmp){
+		String[] colNamesTmp = new String[ 1 ];
+		List<String> colNames = new ArrayList<String>();
+		try{
+			 ResultSetMetaData rsMetaData = rstmp.getMetaData();
+			 int count = rsMetaData.getColumnCount();
+			 for(int i = 1; i<=count; i++) {
+				String stmp = rsMetaData.getColumnName(i);
+				colNames.add( stmp );
+			 }
+			colNamesTmp = new String[ colNames.size() ];
+			colNames.toArray( colNamesTmp );
+		}catch( Exception e){
+			e.printStackTrace();
+		}
+		return colNamesTmp;
 	}
 	
 	

@@ -23,7 +23,6 @@ public class GuiMenu extends JFrame{
 	public String title;
 	private JPanel panel;
 	private JPanel jtmp;
-	private JPanel panelDB;
 	private JPanel panelTxt;
 	private JPanel panelCommand;
 	private JPanel panelEncrypt;
@@ -43,7 +42,7 @@ public class GuiMenu extends JFrame{
 	private JButton butEncrypt;
 	private JTextArea areaRead;
 	private JScrollPane scrollRead;
-	
+
 
 	/**
 	*Metodo constructor de la clase		
@@ -72,7 +71,6 @@ public class GuiMenu extends JFrame{
 			this.setJMenuBar( drawMenuBar() );
 			this.setIconImage( new ImageIcon( GuiMenu.class.getResource( "../../res/img_icon_litle.jpg" ) ).getImage()  );
 			this.setVisible(true);
-			drawPanDB();
 			drawPanTxt();
 			drawPanCommand();
 			drawPanEncrypt();
@@ -285,27 +283,6 @@ public class GuiMenu extends JFrame{
 	}
 
 	/**
-	*Metodo que pinta el JPanel de DB
-	*Retorna JPanel
-	*/
-
-	private JPanel drawPanDB(){
-		try{
-			panelDB = new JPanel();
-		     panelDB.setLayout(new BoxLayout(panelDB,BoxLayout.Y_AXIS));
-			panelDB.setBackground( new Color( 146, 168, 73 , 30 ) );
-			panelDB.setPreferredSize(new Dimension(750, 450));
-		     panelDB.setMaximumSize(new Dimension(750, 450));
-			panelDB.add(Box.createVerticalStrut(10));
-			panelDB.add( drawButtonReadDb() );
-			panelDB.add(Box.createVerticalStrut(10));
-			panelDB.add(drawAreaRead());
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return panelDB;
-	}
-	/**
 	*Metodo que pinta el JPanel de Command
 	*Retorna JPanel
 	*/
@@ -412,13 +389,6 @@ public class GuiMenu extends JFrame{
     }
 
 	/**
-     * Devuelve el DB JPanel
-     * @return
-     */
-    public JPanel getDBJPanel() {
-        return panelDB;
-    }
-	/**
      * Devuelve el Txt JPanel
      * @return
      */
@@ -461,13 +431,6 @@ public class GuiMenu extends JFrame{
      */
     public JButton getBotonDel() {
         return butDel;
-    }
-	/**
-     * Devuelve el boton leerDb
-     * @return
-     */
-    public JButton getBotonReadDb() {
-        return butReadDb;
     }
 	/**
      * Devuelve el boton comando

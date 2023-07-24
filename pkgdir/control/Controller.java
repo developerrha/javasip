@@ -7,11 +7,14 @@ import pkgdir.modelo.MysqlServices;
 import pkgdir.modelo.TextEncryption;
 import pkgdir.modelo.OsCommandServices;
 import pkgdir.graficos.GuiMenu;
+import pkgdir.graficos.GuiDatabase;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 import javax.swing.Box;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 
 public class Controller implements ActionListener{
@@ -24,6 +27,7 @@ public class Controller implements ActionListener{
 	private String stmpg;
 	private CaretListener listener;
 	private Thread thread;
+	public GuiDatabase guiDatabase;
 
 	/**
      * Constructor sin parametros
@@ -40,6 +44,8 @@ public class Controller implements ActionListener{
 	public Controller(GuiMenu guiMenu) {
 		super();
 		this.guiMenul = guiMenu;
+		guiDatabase = new GuiDatabase();
+		guiDatabase.showPanel();
 		agregarEventos();
 		osComServ = new OsCommandServices();		
 	}
@@ -62,12 +68,35 @@ public class Controller implements ActionListener{
 		/*
 		* Evento sobre boton LeerDb
 		*/
-		if( ae.getSource() == guiMenul.getBotonReadDb()){
+		if( ae.getSource() == guiDatabase.getBotonReadDb()){
+			//Obtiene el texto que digita el usuario en el textarea
+			String stmp = (guiDatabase.gettextAreaRead( ) ).getText();	
+			//Instancia la clase del modelo de datos
 			msqlserv = new MysqlServices();
-			(guiMenul.gettextAreaRead( guiMenul.getDBJPanel() )).setText( msqlserv.getDataFromMysql() );	
+			//Obtiene datos desde MysqlServices arreglo objeto con 2 elementos
+			Object[] objtemp = msqlserv.getDataFromMysql( stmp );
+			//Asigna resultado de split sobre el elemento 1 del arrego enviado desde el modelo de datos
+			String[] dataRows = ((String)objtemp[1]).split("\n");
+			//Limpia elcontenido de la tabla
+			((DefaultTableModel)guiDatabase.getTableRead( ).getModel()).setRowCount(0);
+			((DefaultTableModel)guiDatabase.getTableRead( ).getModel()).setColumnCount(0);
+			//Escribe los titulos del la columnas que envio el modelo de datos
+			for(int i = 0; i< ((String[])objtemp[0]).length; i++){
+				((DefaultTableModel)guiDatabase.getTableRead( ).getModel()).addColumn( ((String[])objtemp[0])[i] );
+			}
+			//Recorre el arreglo resultante del split sobre el strin que envio el modelo de datos
+			for(int i = 0; i< dataRows.length; i++){
+				//Asigna a un arreglo temporal el split por comas sobre cada fila que envio elmodelo de datos
+				String[] dataCols = dataRows[i].split(",");
+				//Adiciona el arreglo temporal como una fila al DefaultTableModel de datos de la tabla
+				((DefaultTableModel)guiDatabase.getTableRead( ).getModel()).addRow( dataCols );
+			}
+			// Repinta el Main Panel
+			guiMenul.getMainJPanel().revalidate();
+			guiMenul.getMainJPanel().repaint();
 	   	}
 		/*
-		* Evento sobre boton Escribir Bd
+		* Evento sobre boton Escribir Txt
 		*/
 		if( ae.getSource() == guiMenul.getBotonWrite()){
 			fileServices = new FileServices();
@@ -136,7 +165,7 @@ public class Controller implements ActionListener{
 		if( ae.getSource() == guiMenul.getItemDB()){
 			guiMenul.getMainJPanel().removeAll();
 			guiMenul.getMainJPanel().add(Box.createVerticalStrut(10));
-			guiMenul.getMainJPanel().add(  guiMenul.getDBJPanel() );	
+			guiMenul.getMainJPanel().add(  guiDatabase.getDBJPanel() );	
 			guiMenul.getMainJPanel().revalidate();
 			guiMenul.getMainJPanel().repaint();
 	   	}
@@ -175,7 +204,7 @@ public class Controller implements ActionListener{
 		guiMenul.getItemEncr().addActionListener(this);
 		guiMenul.getItemCommand().addActionListener(this);
 		guiMenul.getBotonReadTxt().addActionListener(this);
-		guiMenul.getBotonReadDb().addActionListener(this);
+		guiDatabase.getBotonReadDb().addActionListener(this);
 		guiMenul.getBotonWrite().addActionListener(this);
 		guiMenul.getBotonDel().addActionListener(this);
 		guiMenul.getBotonCommand().addActionListener(this);
