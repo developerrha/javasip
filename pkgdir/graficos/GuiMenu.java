@@ -34,6 +34,7 @@ public class GuiMenu extends JFrame{
 	private JMenuItem itemExit;
 	private JMenuItem itemCommand;
 	private JMenuItem itemEncrypt;
+	private JMenuItem itemConfig;
 	private JButton butReadTxt;
 	private JButton butReadDb;
 	private JButton butWrite;
@@ -98,6 +99,8 @@ public class GuiMenu extends JFrame{
 		menuTasks.addSeparator();
 		itemExit = new JMenuItem( "Salir" );
 		menuTasks.add( itemExit );
+		itemConfig = new JMenuItem( "Configuracion" );
+		menuSet.add( itemConfig );
 		return menuBar;
 	}
 	/**
@@ -379,6 +382,13 @@ public class GuiMenu extends JFrame{
      */
     public JMenuItem getItemEncr() {
         return itemEncrypt;
+    }
+	/**
+     * Devuelve el JMenu Configuracion
+     * @return
+     */
+    public JMenuItem getItemConfig() {
+        return itemConfig;
     }
 	/**
      * Devuelve el main JPanel

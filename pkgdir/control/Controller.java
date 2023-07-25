@@ -184,7 +184,6 @@ public class Controller implements ActionListener{
 		* Evento sobre item salir
 		*/
 		if( ae.getSource() == guiMenul.getItemEncr()){
-			System.out.println("Soy Encry");
 			guiMenul.getMainJPanel().removeAll();
 			guiMenul.getMainJPanel().add(Box.createVerticalStrut(10));
 			guiMenul.getMainJPanel().add(  guiMenul.getEncryptJPanel() );	
