@@ -1,124 +1,57 @@
-2023-11-10 18:14:37,347 SENT to 192.168.10.50/5060 [AWT-EventQueue-0]
+2023-11-10 20:01:49,612 SENT to 192.168.10.50/5060 [AWT-EventQueue-0]
 
 REGISTER sip:asterisk SIP/2.0
-Via: SIP/2.0/UDP 192.168.10.60:5060;rport;branch=toanyforumNV5yhnIu
+Via: SIP/2.0/UDP 192.168.10.60:5060;rport;branch=toanyforukcGhFmgtK
 Route: <sip:192.168.10.50>
 Max-Forwards: 70
 To: <sip:1119@asterisk>
-From: <sip:1119@asterisk>;tag=MZXMBYcj
-Call-ID: czjYjepz-1699658077321@192.168.10.60
+From: <sip:1119@asterisk>;tag=hwlCrlUe
+Call-ID: nKuAlULk-1699664509589@192.168.10.60
 CSeq: 1 REGISTER
 Expires: 3600
 Contact: <sip:1119@192.168.10.60:5060;transport=UDP>
 
 
-2023-11-10 18:14:37,355 RECEIVED from 192.168.10.50/5060 [TransportManager 5060]
+2023-11-10 20:01:49,615 RECEIVED from 192.168.10.50/5060 [TransportManager 5060]
 
 SIP/2.0 401 Unauthorized
-Via: SIP/2.0/UDP 192.168.10.60:5060;rport=5060;received=192.168.10.60;branch=toanyforumNV5yhnIu
-Call-ID: czjYjepz-1699658077321@192.168.10.60
-From: <sip:1119@asterisk>;tag=MZXMBYcj
-To: <sip:1119@asterisk>;tag=toanyforumNV5yhnIu
+Via: SIP/2.0/UDP 192.168.10.60:5060;rport=5060;received=192.168.10.60;branch=toanyforukcGhFmgtK
+Call-ID: nKuAlULk-1699664509589@192.168.10.60
+From: <sip:1119@asterisk>;tag=hwlCrlUe
+To: <sip:1119@asterisk>;tag=toanyforukcGhFmgtK
 CSeq: 1 REGISTER
-WWW-Authenticate: Digest realm="asterisk",nonce="1699658077/673d16a889f38230cca0b73035550ee0",opaque="28706c7775019cb6",algorithm=MD5,qop="auth"
+WWW-Authenticate: Digest realm="asterisk",nonce="1699664509/72eb6e4fa973cc44a906e6512b7a44b5",opaque="55f4ab6238556edc",algorithm=MD5,qop="auth"
 Server: Asterisk PBX 20.4.0
 Content-Length:  0
 
 
-2023-11-10 18:14:37,383 SENT to 192.168.10.50/5060 [TransportManager 5060]
+2023-11-10 20:01:49,635 SENT to 192.168.10.50/5060 [TransportManager 5060]
 
 REGISTER sip:asterisk SIP/2.0
-Via: SIP/2.0/UDP 192.168.10.60:5060;rport;branch=toanyforu3B5dhzfGG
+Via: SIP/2.0/UDP 192.168.10.60:5060;rport;branch=toanyforujRy5xN5zX
 Route: <sip:192.168.10.50>
 Max-Forwards: 70
 To: <sip:1119@asterisk>
-From: <sip:1119@asterisk>;tag=MZXMBYcj
-Call-ID: czjYjepz-1699658077321@192.168.10.60
+From: <sip:1119@asterisk>;tag=hwlCrlUe
+Call-ID: nKuAlULk-1699664509589@192.168.10.60
 CSeq: 2 REGISTER
 Expires: 3600
 Contact: <sip:1119@192.168.10.60:5060;transport=UDP>
-Authorization: Digest username="1119", realm="asterisk", nonce="1699658077/673d16a889f38230cca0b73035550ee0", uri="sip:asterisk", response="de38225b99c40c285e9cae1311c8f4e6", nc="00000001", cnonce="6724aaf8-4688-41ee-b70b-dbe1652de717", qop="auth", opaque="28706c7775019cb6"
+Authorization: Digest username="1119", realm="asterisk", nonce="1699664509/72eb6e4fa973cc44a906e6512b7a44b5", uri="sip:asterisk", response="ebeebfec6c22a9e551e3b9aaf3e38b14", nc="00000001", cnonce="ed494de4-b891-4a9d-8dd9-f0df7f9c49bf", qop="auth", opaque="55f4ab6238556edc"
 
 
-2023-11-10 18:14:37,388 RECEIVED from 192.168.10.50/5060 [TransportManager 5060]
+2023-11-10 20:01:49,640 RECEIVED from 192.168.10.50/5060 [TransportManager 5060]
 
 SIP/2.0 200 OK
-Via: SIP/2.0/UDP 192.168.10.60:5060;rport=5060;received=192.168.10.60;branch=toanyforu3B5dhzfGG
-Call-ID: czjYjepz-1699658077321@192.168.10.60
-From: <sip:1119@asterisk>;tag=MZXMBYcj
-To: <sip:1119@asterisk>;tag=toanyforu3B5dhzfGG
+Via: SIP/2.0/UDP 192.168.10.60:5060;rport=5060;received=192.168.10.60;branch=toanyforujRy5xN5zX
+Call-ID: nKuAlULk-1699664509589@192.168.10.60
+From: <sip:1119@asterisk>;tag=hwlCrlUe
+To: <sip:1119@asterisk>;tag=toanyforujRy5xN5zX
 CSeq: 2 REGISTER
-Date: Fri, 10 Nov 2023 23:14:37 GMT
+Date: Sat, 11 Nov 2023 01:01:49 GMT
 Contact: <sip:1119@192.168.10.60:5060;transport=UDP>;expires=3599
 Expires: 3600
 Server: Asterisk PBX 20.4.0
-Content-Length:  0
-
-
-2023-11-10 18:15:20,664 RECEIVED from 192.168.10.50/5060 [TransportManager 5060]
-
-INVITE sip:1119@192.168.10.60:5060;transport=UDP SIP/2.0
-Via: SIP/2.0/UDP 192.168.10.50:5060;rport;branch=z9hG4bKPjea2e31b2-1ba7-424e-b5ef-e4be97e546b0
-From: <sip:1103@192.168.10.50>;tag=92b95ee8-25b9-42b8-b938-f4482f6ae697
-To: <sip:1119@192.168.10.60>
-Contact: <sip:asterisk@192.168.10.50:5060>
-Call-ID: a179f44f-2dbf-4c70-b3c7-08361ebddf77
-CSeq: 11800 INVITE
-Allow: OPTIONS, REGISTER, SUBSCRIBE, NOTIFY, PUBLISH, INVITE, ACK, BYE, CANCEL, UPDATE, PRACK, MESSAGE, REFER
-Supported: 100rel, timer, replaces, norefersub, histinfo
-Session-Expires: 1800
-Min-SE: 90
-Max-Forwards: 70
-User-Agent: Asterisk PBX 20.4.0
-Content-Type: application/sdp
-Content-Length:   260
-
-v=0
-o=- 815210955 815210955 IN IP4 192.168.10.50
-s=Asterisk
-c=IN IP4 192.168.10.50
-t=0 0
-m=audio 16502 RTP/AVP 0 3 101
-a=rtpmap:0 PCMU/8000
-a=rtpmap:3 GSM/8000
-a=rtpmap:101 telephone-event/8000
-a=fmtp:101 0-16
-a=ptime:20
-a=maxptime:150
-a=sendrecv
-
-2023-11-10 18:15:20,668 SENT to 192.168.10.50/5060 [TransportManager 5060]
-
-SIP/2.0 180 Ringing
-From: <sip:1103@192.168.10.50>;tag=92b95ee8-25b9-42b8-b938-f4482f6ae697
-Call-ID: a179f44f-2dbf-4c70-b3c7-08361ebddf77
-CSeq: 11800 INVITE
-Via: SIP/2.0/UDP 192.168.10.50:5060;rport=5060;branch=z9hG4bKPjea2e31b2-1ba7-424e-b5ef-e4be97e546b0
-To: <sip:1119@192.168.10.60>;tag=qMF5pcrZRL
-Contact: <sip:192.168.10.60:5060;transport=UDP>
-
-
-2023-11-10 18:15:31,332 SENT to 192.168.10.50/5060 [AWT-EventQueue-0]
-
-SIP/2.0 486 Busy Here
-From: <sip:1103@192.168.10.50>;tag=92b95ee8-25b9-42b8-b938-f4482f6ae697
-Call-ID: a179f44f-2dbf-4c70-b3c7-08361ebddf77
-CSeq: 11800 INVITE
-Via: SIP/2.0/UDP 192.168.10.50:5060;rport=5060;branch=z9hG4bKPjea2e31b2-1ba7-424e-b5ef-e4be97e546b0
-To: <sip:1119@192.168.10.60>;tag=qMF5pcrZRL
-Contact: <sip:192.168.10.60:5060;transport=UDP>
-
-
-2023-11-10 18:15:31,334 RECEIVED from 192.168.10.50/5060 [TransportManager 5060]
-
-ACK sip:1119@192.168.10.60:5060;transport=UDP SIP/2.0
-Via: SIP/2.0/UDP 192.168.10.50:5060;rport;branch=z9hG4bKPjea2e31b2-1ba7-424e-b5ef-e4be97e546b0
-From: <sip:1103@192.168.10.50>;tag=92b95ee8-25b9-42b8-b938-f4482f6ae697
-To: <sip:1119@192.168.10.60>;tag=qMF5pcrZRL
-Call-ID: a179f44f-2dbf-4c70-b3c7-08361ebddf77
-CSeq: 11800 ACK
-Max-Forwards: 70
-User-Agent: Asterisk PBX 20.4.0
 Content-Length:  0
 
 
