@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Created-By: nombre
-Class-Path: . lib/mysql-connector-java-8.0.11.jar
-Main-Class: pkgdir.CargarClase
