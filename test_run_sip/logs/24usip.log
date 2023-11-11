@@ -1,0 +1,277 @@
+2023-11-10 18:14:37,158 DEBUG [gui-event-manager] config file /datos/laboratorio/java_mio/sip_phone/test_run/././conf/conf24sip.xml/././conf/conf24sip.xml founded
+2023-11-10 18:14:37,221 DEBUG [gui-event-manager] name: ipAddress val: 192.168.10.60
+2023-11-10 18:14:37,222 DEBUG [gui-event-manager] name: domain val: asterisk
+2023-11-10 18:14:37,222 DEBUG [gui-event-manager] name: password val: 1119
+2023-11-10 18:14:37,222 DEBUG [gui-event-manager] name: outboundProxy val: sip:192.168.10.50
+2023-11-10 18:14:37,223 DEBUG [gui-event-manager] name: sipPort val: 5060
+2023-11-10 18:14:37,223 DEBUG [gui-event-manager] name: rtpPort val: 0
+2023-11-10 18:14:37,223 DEBUG [gui-event-manager] name: mediaMode val: captureAndPlayback
+2023-11-10 18:14:37,224 DEBUG [gui-event-manager] name: mediaDebug val: false
+2023-11-10 18:14:37,224 DEBUG [gui-event-manager] name: mediaFile val: 
+2023-11-10 18:14:37,224 DEBUG [gui-event-manager] name: ringTone val: iphone_time_passes.wav
+2023-11-10 18:14:37,224 INFO  [gui-event-manager] starting user agent [myAddress: 192.168.10.60, sipPort: 5060, userpart: 1119, domain: asterisk]
+2023-11-10 18:14:37,236 DEBUG [gui-event-manager] new DatagramSocket(5060, /192.168.10.60
+2023-11-10 18:14:37,240 INFO  [gui-event-manager] added datagram socket 192.168.10.60:5060/UDP
+2023-11-10 18:14:37,240 INFO  [gui-event-manager] added 192.168.10.60:5060/UDP: com24usip.UdpMessageReceiver@43455d44 to message receivers
+2023-11-10 18:14:37,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:14:37,333 DEBUG [AWT-EventQueue-0] SM toanyforumNV5yhnIu|REGISTER [NonInviteClientTransactionStateInit -> NonInviteClientTransactionStateTrying] setState
+2023-11-10 18:14:37,345 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:14:37,346 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:14:37,347 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:14:37,347 DEBUG [AWT-EventQueue-0] UdpMessageSender.sendMessage
+2023-11-10 18:14:37,347 DEBUG [AWT-EventQueue-0] UdpMessageSender.sendBytes
+2023-11-10 18:14:37,347 DEBUG [AWT-EventQueue-0] UdpMessageSender.sendBytes 347 /192.168.10.50:5060
+2023-11-10 18:14:37,347 DEBUG [AWT-EventQueue-0] /192.168.10.60
+2023-11-10 18:14:37,347 DEBUG [AWT-EventQueue-0] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:14:37,360 DEBUG [TransportManager 5060] ClientTransaction = com24usip.invite.NonInviteClientTransaction@31537229
+2023-11-10 18:14:37,360 DEBUG [TransportManager 5060] SM toanyforumNV5yhnIu|REGISTER [NonInviteClientTransactionStateTrying -> NonInviteClientTransactionStateCompleted] setState
+2023-11-10 18:14:37,383 DEBUG [TransportManager 5060] SM toanyforu3B5dhzfGG|REGISTER [NonInviteClientTransactionStateInit -> NonInviteClientTransactionStateTrying] setState
+2023-11-10 18:14:37,383 DEBUG [TransportManager 5060] UdpMessageSender.sendMessage
+2023-11-10 18:14:37,383 DEBUG [TransportManager 5060] UdpMessageSender.sendBytes
+2023-11-10 18:14:37,383 DEBUG [TransportManager 5060] UdpMessageSender.sendBytes 623 /192.168.10.50:5060
+2023-11-10 18:14:37,383 DEBUG [TransportManager 5060] /192.168.10.60
+2023-11-10 18:14:37,383 DEBUG [TransportManager 5060] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:14:37,390 DEBUG [TransportManager 5060] ClientTransaction = com24usip.invite.NonInviteClientTransaction@34a1f596
+2023-11-10 18:14:37,390 DEBUG [TransportManager 5060] SM toanyforu3B5dhzfGG|REGISTER [NonInviteClientTransactionStateTrying -> NonInviteClientTransactionStateCompleted] setState
+2023-11-10 18:14:42,330 DEBUG [TransactionManager Timer] SM toanyforumNV5yhnIu|REGISTER [NonInviteClientTransactionStateCompleted -> NonInviteClientTransactionStateTerminated] setState
+2023-11-10 18:14:42,380 DEBUG [TransactionManager Timer] SM toanyforu3B5dhzfGG|REGISTER [NonInviteClientTransactionStateCompleted -> NonInviteClientTransactionStateTerminated] setState
+2023-11-10 18:15:02,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:15:02,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:15:02,332 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:15:02,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:15:20,665 DEBUG [TransportManager 5060] InitialRequestManager manageInitialRequest 
+2023-11-10 18:15:20,668 DEBUG [TransportManager 5060] SM z9hG4bKPjea2e31b2-1ba7-424e-b5ef-e4be97e546b0|INVITE [InviteServerTransactionStateInit -> InviteServerTransactionStateProceeding] setState
+2023-11-10 18:15:20,668 DEBUG [TransportManager 5060] SM z9hG4bKPjea2e31b2-1ba7-424e-b5ef-e4be97e546b0|INVITE [InviteServerTransactionStateProceeding -> InviteServerTransactionStateProceeding] setState
+2023-11-10 18:15:20,668 DEBUG [TransportManager 5060] SM z9hG4bKPjea2e31b2-1ba7-424e-b5ef-e4be97e546b0|INVITE [InviteServerTransactionStateProceeding -> InviteServerTransactionStateProceeding] setState
+2023-11-10 18:15:20,668 DEBUG [TransportManager 5060] UdpMessageSender.sendMessage
+2023-11-10 18:15:20,668 DEBUG [TransportManager 5060] UdpMessageSender.sendBytes
+2023-11-10 18:15:20,668 DEBUG [TransportManager 5060] UdpMessageSender.sendBytes 358 /192.168.10.50:5060
+2023-11-10 18:15:20,668 DEBUG [TransportManager 5060] /192.168.10.60
+2023-11-10 18:15:20,668 DEBUG [TransportManager 5060] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:15:20,668 DEBUG [TransportManager 5060] SM a179f44f-2dbf-4c70-b3c7-08361ebddf77|92b95ee8-25b9-42b8-b938-f4482f6ae697|qMF5pcrZRL [DialogStateInit -> DialogStateEarly] setState
+2023-11-10 18:15:20,668 DEBUG [TransportManager 5060] InviteHandler handleInitialInvite 
+2023-11-10 18:15:20,669 DEBUG [TransportManager 5060] EventManager incomingCall
+2023-11-10 18:15:20,674 DEBUG [AWT-EventQueue-0] SM a179f44f-2dbf-4c70-b3c7-08361ebddf77 [CallStateInit -> CallStateUas] setState
+2023-11-10 18:15:27,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:15:27,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:15:27,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:15:27,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:15:31,327 DEBUG [AWT-EventQueue-0] SM a179f44f-2dbf-4c70-b3c7-08361ebddf77 [CallStateUas -> CallStateTerminated] setState
+2023-11-10 18:15:31,331 DEBUG [AWT-EventQueue-0] SM z9hG4bKPjea2e31b2-1ba7-424e-b5ef-e4be97e546b0|INVITE [InviteServerTransactionStateProceeding -> InviteServerTransactionStateProceeding] setState
+2023-11-10 18:15:31,332 DEBUG [AWT-EventQueue-0] SM z9hG4bKPjea2e31b2-1ba7-424e-b5ef-e4be97e546b0|INVITE [InviteServerTransactionStateProceeding -> InviteServerTransactionStateCompleted] setState
+2023-11-10 18:15:31,332 DEBUG [AWT-EventQueue-0] UdpMessageSender.sendMessage
+2023-11-10 18:15:31,332 DEBUG [AWT-EventQueue-0] UdpMessageSender.sendBytes
+2023-11-10 18:15:31,332 DEBUG [AWT-EventQueue-0] UdpMessageSender.sendBytes 360 /192.168.10.50:5060
+2023-11-10 18:15:31,332 DEBUG [AWT-EventQueue-0] /192.168.10.60
+2023-11-10 18:15:31,332 DEBUG [AWT-EventQueue-0] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:15:31,333 DEBUG [AWT-EventQueue-0] SM a179f44f-2dbf-4c70-b3c7-08361ebddf77|92b95ee8-25b9-42b8-b938-f4482f6ae697|qMF5pcrZRL [DialogStateEarly -> DialogStateTerminated] setState
+2023-11-10 18:15:31,334 DEBUG [TransportManager 5060] SM z9hG4bKPjea2e31b2-1ba7-424e-b5ef-e4be97e546b0|INVITE [InviteServerTransactionStateCompleted -> InviteServerTransactionStateConfirmed] setState
+2023-11-10 18:15:36,334 DEBUG [TransactionManager Timer] SM z9hG4bKPjea2e31b2-1ba7-424e-b5ef-e4be97e546b0|INVITE [InviteServerTransactionStateConfirmed -> InviteServerTransactionStateTerminated] setState
+2023-11-10 18:15:52,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:15:52,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:15:52,332 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:15:52,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:16:17,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:16:17,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:16:17,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:16:17,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:16:42,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:16:42,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:16:42,332 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:16:42,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:17:07,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:17:07,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:17:07,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:17:07,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:17:32,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:17:32,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:17:32,332 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:17:32,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:17:57,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:17:57,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:17:57,332 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:17:57,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:18:22,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:18:22,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:18:22,332 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:18:22,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:18:47,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:18:47,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:18:47,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:18:47,334 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:19:12,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:19:12,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:19:12,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:19:12,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:19:37,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:19:37,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:19:37,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:19:37,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:20:02,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:20:02,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:20:02,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:20:02,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:20:27,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:20:27,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:20:27,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:20:27,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:20:52,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:20:52,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:20:52,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:20:52,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:21:17,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:21:17,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:21:17,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:21:17,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:21:42,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:21:42,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:21:42,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:21:42,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:22:07,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:22:07,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:22:07,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:22:07,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:22:32,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:22:32,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:22:32,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:22:32,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:22:57,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:22:57,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:22:57,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:22:57,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:23:22,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:23:22,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:23:22,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:23:22,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:23:47,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:23:47,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:23:47,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:23:47,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:24:12,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:24:12,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:24:12,334 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:24:12,334 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:24:37,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:24:37,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:24:37,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:24:37,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:25:02,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:25:02,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:25:02,332 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:25:02,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:25:27,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:25:27,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:25:27,332 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:25:27,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:25:52,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:25:52,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:25:52,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:25:52,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:26:17,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:26:17,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:26:17,334 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:26:17,334 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:26:42,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:26:42,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:26:42,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:26:42,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:27:07,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:27:07,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:27:07,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:27:07,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:27:32,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:27:32,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:27:32,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:27:32,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:27:57,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:27:57,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:27:57,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:27:57,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:28:22,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:28:22,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:28:22,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:28:22,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:28:47,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:28:47,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:28:47,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:28:47,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:29:12,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:29:12,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:29:12,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:29:12,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:29:37,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:29:37,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:29:37,334 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:29:37,334 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:30:02,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:30:02,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:30:02,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:30:02,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:30:27,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:30:27,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:30:27,332 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:30:27,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:30:52,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:30:52,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:30:52,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:30:52,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:31:17,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:31:17,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:31:17,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:31:17,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:31:42,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:31:42,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:31:42,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:31:42,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:32:07,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:32:07,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:32:07,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:32:07,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:32:32,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:32:32,334 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:32:32,335 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:32:32,335 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:32:57,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:32:57,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:32:57,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:32:57,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:33:22,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:33:22,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:33:22,334 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:33:22,334 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:33:47,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:33:47,334 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:33:47,334 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:33:47,334 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:34:12,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:34:12,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:34:12,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:34:12,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:34:37,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:34:37,334 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:34:37,334 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:34:37,334 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:35:02,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:35:02,335 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:35:02,336 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:35:02,336 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:35:27,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:35:27,334 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:35:27,334 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:35:27,334 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:35:52,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:35:52,334 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:35:52,334 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:35:52,334 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:36:17,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:36:17,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:36:17,334 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:36:17,335 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:36:42,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:36:42,333 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:36:42,333 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:36:42,334 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent
+2023-11-10 18:37:07,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes
+2023-11-10 18:37:07,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes 4 /192.168.10.50:5060
+2023-11-10 18:37:07,332 DEBUG [UdpMessageSender Timer] /192.168.10.60
+2023-11-10 18:37:07,332 DEBUG [UdpMessageSender Timer] UdpMessageSender.sendBytes packet sent

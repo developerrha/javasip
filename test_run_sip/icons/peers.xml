@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<peers xmlns="http://peers.sourceforge.net"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://peers.sourceforge.net peers.xsd">
+  <ipAddress>192.168.10.60</ipAddress>
+  <userPart>1119</userPart>
+  <domain>asterisk</domain>
+  <password>1119</password>
+  <outboundProxy>sip:192.168.10.50</outboundProxy>
+  <sipPort>5060</sipPort>
+  <rtpPort>0</rtpPort>
+  <authorizationUsername></authorizationUsername>
+  <mediaMode>captureAndPlayback</mediaMode>
+  <mediaDebug>false</mediaDebug>
+  <mediaFile></mediaFile>
+</peers>
